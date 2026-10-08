@@ -168,7 +168,7 @@ const iconBox = 'w-10 h-10 bg-rosa text-gray-950 flex items-center justify-cente
 
           <!--
             Web3Forms: servicio gratuito sin backend.
-            Reemplaza el valor de "access_key" con tu clave de https://web3forms.com
+            La access_key es pública por diseño (va en el HTML); se gestiona en https://web3forms.com
           -->
           <form
             id="contact-form"
@@ -177,7 +177,7 @@ const iconBox = 'w-10 h-10 bg-rosa text-gray-950 flex items-center justify-cente
             class="space-y-5"
             novalidate
           >
-            <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI" />
+            <input type="hidden" name="access_key" value="5ff4df57-cfc2-4f98-a329-bd46765deceb" />
             <input type="hidden" name="subject" value={content.subject} />
             <input type="hidden" name="redirect" value={redirectURL} />
             <!-- Honeypot anti-spam -->
