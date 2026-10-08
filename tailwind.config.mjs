@@ -4,6 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        rosa: '#ef4d84',
+        sol: '#ffd233',
+        rey: '#336ef6',
         brand: {
           50:  '#eff6ff',
           100: '#dbeafe',
@@ -19,7 +22,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Montserrat', 'system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },

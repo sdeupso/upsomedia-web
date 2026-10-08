@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from './PageHero.astro';
+import { routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  es: {
+    title: 'Nosotros',
+    description: 'Conoce a Upsomedia: un equipo apasionado por crear contenido original y relevante desde Santiago, Chile para el mundo hispanohablante.',
+    kicker: 'Quiénes somos',
+    lead: 'Somos un equipo de creadores, periodistas y productores apasionados por contar las historias que el mundo quiere escuchar.',
+    storyKicker: 'Nuestra historia',
+    storyTitle: 'Creando desde Santiago para el mundo',
+    story: [
+      'Upsomedia nació con una convicción simple: el contenido de calidad, original y relevante tiene el poder de conectar personas en cualquier parte del mundo.',
+      'Construimos una red de canales digitales que hoy alcanza a más de 120 millones de seguidores en plataformas como YouTube, TikTok, Instagram y más.',
+      'Cada mes producimos miles de videos y artículos en formatos variados: entretenimiento, curiosidades, cultura pop, ciencia, y todo lo que genera conversación en internet.',
+    ],
+    stats: [
+      { value: '+120M', desc: 'Seguidores acumulados en todas las plataformas' },
+      { value: '+8000', desc: 'Videos producidos cada mes' },
+      { value: '+200',  desc: 'Canales digitales activos' },
+      { value: '+10',   desc: 'Años de experiencia en medios digitales' },
+    ],
+    valuesKicker: 'Lo que nos mueve',
+    valuesTitle: 'Nuestros valores',
+    values: [
+      { title: 'Creatividad',     description: 'Buscamos constantemente nuevas formas de contar historias que conecten con la audiencia.' },
+      { title: 'Calidad',         description: 'Cada pieza de contenido pasa por un proceso riguroso para garantizar el más alto estándar.' },
+      { title: 'Transversalidad', description: 'Creamos contenido para todas las edades y gustos, sin fronteras culturales ni generacionales.' },
+      { title: 'Innovación',      description: 'Nos adaptamos a las nuevas plataformas y tendencias antes de que sean masivas.' },
+    ],
+    missionKicker: 'Nuestra misión',
+    mission: 'Generar contenido original, relevante y transversal que entretiene, informa e inspira a millones de personas en el mundo hispanohablante.',
+    missionButton: 'Trabajemos juntos',
+  },
+  en: {
+    title: 'About us',
+    description: 'Meet Upsomedia: a team passionate about creating original, relevant content from Santiago, Chile for the Spanish-speaking world.',
+    kicker: 'Who we are',
+    lead: 'We are a team of creators, journalists and producers passionate about telling the stories the world wants to hear.',
+    storyKicker: 'Our story',
+    storyTitle: 'Creating from Santiago for the world',
+    story: [
+      'Upsomedia was born from a simple belief: original, relevant, high-quality content has the power to connect people anywhere in the world.',
+      'We have built a network of digital channels that today reaches more than 120 million followers on platforms such as YouTube, TikTok, Instagram and more.',
+      'Every month we produce thousands of videos and articles in a wide range of formats: entertainment, curiosities, pop culture, science and everything that gets the internet talking.',
+    ],
+    stats: [
+      { value: '+120M', desc: 'Followers across all platforms' },
+      { value: '+8000', desc: 'Videos produced every month' },
+      { value: '+200',  desc: 'Active digital channels' },
+      { value: '+10',   desc: 'Years of experience in digital media' },
+    ],
+    valuesKicker: 'What drives us',
+    valuesTitle: 'Our values',
+    values: [
+      { title: 'Creativity',  description: 'We are always looking for new ways to tell stories that connect with our audience.' },
+      { title: 'Quality',     description: 'Every piece of content goes through a rigorous process to meet the highest standard.' },
+      { title: 'Reach',       description: 'We create content for every age and taste, with no cultural or generational borders.' },
+      { title: 'Innovation',  description: 'We adapt to new platforms and trends before they go mainstream.' },
+    ],
+    missionKicker: 'Our mission',
+    mission: 'To create original, relevant and all-encompassing content that entertains, informs and inspires millions of people across the Spanish-speaking world.',
+    missionButton: "Let's work together",
+  },
+}[lang];
+
+const statTiles = ['bg-rosa text-gray-950', 'bg-sol text-gray-950', 'bg-rey text-gray-950', 'bg-gray-950 text-white'];
+---
+
+<Layout title={content.title} description={content.description} lang={lang} alternates={routes.about}>
+
+  <PageHero kicker={content.kicker} title={content.title} lead={content.lead} />
+
+  <!-- Historia -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div>
+        <p class="text-rosa text-xs font-bold tracking-widest uppercase mb-3">{content.storyKicker}</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-gray-950 leading-tight mb-6">
+          {content.storyTitle}
+        </h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+          {content.story.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+      <ul class="grid grid-cols-2 gap-4" role="list">
+        {content.stats.map(({ value, desc }, i) => (
+          <li class:list={['aspect-square p-6 flex flex-col justify-end', statTiles[i]]}>
+            <p class="text-4xl md:text-5xl font-extrabold leading-none">{value}</p>
+            <p class="text-sm font-semibold mt-2">{desc}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Valores -->
+  <section class="bg-sol py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-gray-950 text-xs font-bold tracking-widest uppercase text-center mb-3">{content.valuesKicker}</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-gray-950 text-center mb-12">
+        {content.valuesTitle}
+      </h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10" role="list">
+        {content.values.map(({ title, description }, i) => (
+          <li>
+            <span class="text-5xl font-extrabold text-rosa leading-none block">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="text-xl font-extrabold uppercase text-gray-950 mt-3 mb-2">{title}</h3>
+            <p class="text-sm text-gray-900 leading-relaxed">{description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Misión -->
+  <section class="bg-rey py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-950 text-xs font-bold tracking-widest uppercase mb-4">{content.missionKicker}</p>
+      <h2 class="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-gray-950 leading-tight">
+        “{content.mission}”
+      </h2>
+      <a href={routes.contact[lang]} class="btn-rosa mt-10 sm:px-12">
+        {content.missionButton}
+      </a>
+    </div>
+  </section>
+
+</Layout>

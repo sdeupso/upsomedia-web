@@ -17,8 +17,18 @@
     @apply inline-flex items-center justify-center px-6 py-3 rounded-lg bg-brand-600 text-white font-semibold text-sm tracking-wide hover:bg-brand-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
   }
 
+  .btn-rosa {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md bg-rosa text-gray-950 font-bold text-sm tracking-wide hover:brightness-95 transition focus:outline-none focus:ring-2 focus:ring-rosa focus:ring-offset-2;
+  }
+
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-brand-600 text-brand-600 font-semibold text-sm tracking-wide hover:bg-brand-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  }
+
+  .carousel-arrow {
+    @apply absolute z-10 -translate-y-1/2 text-white transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950;
+    top: var(--arrow-top, 35%);
+    filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.6));
   }
 
   .section-title {
@@ -27,5 +37,14 @@
 
   .section-subtitle {
     @apply text-lg text-gray-500 mt-4 max-w-2xl;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 }

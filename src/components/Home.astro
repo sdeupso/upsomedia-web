@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { homePath, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const months = {
+  es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+};
+
+const channels = [
+  { slug: 'upso',               name: 'Upsocl',             month: 10, year: 2013, es: '10M de seguidores',                          en: '10M followers' },
+  { slug: 'sabores',            name: 'Sabores',            month: 10, year: 2015, es: '15M de seguidores',                          en: '15M followers' },
+  { slug: 'pop',                name: 'pop!',               month: 4,  year: 2017, es: '1B de visualizaciones de video durante 2021', en: '1B video views in 2021' },
+  { slug: 'pixi',               name: 'Pixi',               month: 5,  year: 2016, es: '+3M de seguidores',                          en: '+3M followers' },
+  { slug: 'cracks',             name: 'Cracks',             month: 5,  year: 2017, es: '15 series originales para FB Watch',         en: '15 original series for FB Watch' },
+  { slug: 'iconos',             name: 'Íconos',             month: 8,  year: 2017, es: '1B de visualizaciones de video durante 2021', en: '1B video views in 2021' },
+  { slug: 't',                  name: 'HDT',                month: 12, year: 2017, es: '500K interacciones sociales al mes',         en: '500K social interactions per month' },
+  { slug: 'juego-de-ninos',     name: 'Juego de niños',     month: 9,  year: 2019, es: '300M de visualizaciones en 2021',            en: '300M views in 2021' },
+  { slug: 'el-ring',            name: 'El Ring',            month: 12, year: 2019, es: '400K nuevos seguidores en 2021',             en: '400K new followers in 2021' },
+  { slug: 'showbiz',            name: 'Showbiz',            month: 1,  year: 2020, es: '250K interacciones mensuales',               en: '250K monthly interactions' },
+  { slug: 'vitamina',           name: 'Vitamina',           month: 2,  year: 2020, es: '200M de visualizaciones de video en 2021',    en: '200M video views in 2021' },
+  { slug: 'el-enigma',          name: 'El Enigma',          month: 6,  year: 2020, es: '700M de visualizaciones de video en 2021',    en: '700M video views in 2021' },
+  { slug: 'rosa',               name: 'Rosa',               month: 9,  year: 2020, es: '5M de interacciones sociales en 2021',       en: '5M social interactions in 2021' },
+  { slug: 'saber-mas',          name: 'Saber+',             month: 3,  year: 2021, es: '100 videos originales durante 2021',         en: '100 original videos in 2021' },
+  { slug: 'verde',              name: 'Upsocl Verde',       month: 6,  year: 2014, es: '2M de interacciones sociales al mes',        en: '2M social interactions per month' },
+  { slug: 'muvi',               name: 'Muvi',               month: 2,  year: 2017, es: '200 artículos originales cada mes',          en: '200 original articles per month' },
+  { slug: 'mujer',              name: 'Upsocl Mujer',       month: 8,  year: 2014, es: '+5M de personas alcanzadas a la semana',     en: '+5M people reached per week' },
+  { slug: 'mama-reina',         name: 'Mamá Reina',         month: 12, year: 2019, es: '6M de interacciones en 2021',                en: '6M interactions in 2021' },
+  { slug: 'mensajes-positivos', name: 'Mensajes Positivos', month: 3,  year: 2017, es: '10M de seguidores',                          en: '10M followers' },
+  { slug: 'm-magazine',         name: 'Magnates',           month: 11, year: 2020, es: '+500 videos nuevos en 2021',                 en: '+500 new videos in 2021' },
+  { slug: 'keipop',             name: 'Keipop',             month: 3,  year: 2019, es: '450K de interacciones mensuales',            en: '450K monthly interactions' },
+  { slug: 'estrellas',          name: 'Estrellas',          month: 3,  year: 2021, es: '20M de visualizaciones de video mensuales',  en: '20M monthly video views' },
+  { slug: 'video',              name: 'Upsocl Video',       month: 1,  year: 2015, es: '100M visualizaciones de video mensuales',    en: '100M monthly video views' },
+  { slug: 'emoji',              name: '[e]moji',            month: 7,  year: 2021, es: '500K de personas alcanzadas a la semana',    en: '500K people reached per week' },
+  { slug: 'aleluya',            name: 'Aleluya',            month: 7,  year: 2021, es: '40 segundos de retención promedio en los videos', en: '40-second average video retention' },
+];
+
+const content = {
+  es: {
+    title: 'Upsomedia',
+    description: 'Upsomedia: generación de contenido original, relevante y transversal. +120M seguidores. El medio de entretenimiento más curioso del mundo.',
+    heroTitle: ['Siempre creando,', 'somos Upsomedia'],
+    heroText: 'Upsomedia es generación de contenido original, relevante y transversal con el que buscamos llegar a tantas personas como nos sea posible. Somos el resultado de desafiarnos constantemente y darle buen uso a toda nuestra experiencia. Nos apasiona atrevernos, por eso nunca dejamos de buscar nuevos talentos y oportunidades para seguir creciendo.',
+    statsLabel: 'Cifras de Upsomedia',
+    statsTitle: 'El medio de entretención + curioso del mundo',
+    stats: [
+      { value: '+120',  unit: 'millones',  desc: 'de seguidores en más de 70 países' },
+      { value: '+200',  unit: 'canales',   desc: 'con presencia en Facebook, YouTube, Instagram, TikTok y Snapchat' },
+      { value: '+4000', unit: 'millones',  desc: 'de visualizaciones mensuales en Facebook, 40% de ellas sobre 1 min' },
+      { value: '+8000', unit: 'videos',    desc: 'producidos al mes' },
+      { value: '+1000', unit: 'artículos', desc: 'redactados al mes' },
+      { value: '+80',   unit: 'países',    desc: 'disfrutan de nuestro contenido' },
+    ],
+    channelsTitle: 'Nuestras mejores creaciones',
+    prev: 'Ver canales anteriores',
+    next: 'Ver más canales',
+    channelsIntro: ['Hemos encontrado tanto por compartir con el mundo que', 'un canal jamás sería suficiente', ', por eso hicimos muchos… y seguimos en busca de más.'],
+    ctaLabel: 'Contacto',
+    phoneAlt: 'Estatua clásica mirando un celular, en la pantalla de un teléfono',
+    ctaTitle: ['No te', 'quedes', 'con las', 'ganas'],
+    ctaText: 'Comparte tu curiosidad',
+    ctaButton: 'Escríbenos',
+  },
+  en: {
+    title: 'Upsomedia',
+    description: 'Upsomedia generates original, relevant and all-encompassing content. +120M followers. The most curious entertainment media company in the world.',
+    heroTitle: ['Always creating.', 'We are Upsomedia.'],
+    heroText: 'Upsomedia generates original, relevant and all-encompassing content to reach as many people as possible. We challenge ourselves and use all our experience as a result. We are passionate about taking chances and we never stop looking for new talents to grow even more.',
+    statsLabel: 'Upsomedia in numbers',
+    statsTitle: 'The most curious entertainment media company in the world.',
+    stats: [
+      { value: '+120',  unit: 'million',  desc: 'followers in over 70 countries' },
+      { value: '+200',  unit: 'channels', desc: 'with an established presence in Facebook, YouTube, Instagram and TikTok' },
+      { value: '+4000', unit: 'million',  desc: 'monthly views on Facebook, with 40% of them over 1 min' },
+      { value: '+8000', unit: 'videos',   desc: 'produced per month' },
+      { value: '+1000', unit: 'articles', desc: 'written per month' },
+      { value: '+80',   unit: 'million',  desc: 'visits to our webpage upsocl.com' },
+    ],
+    channelsTitle: 'Our best creations',
+    prev: 'Previous channels',
+    next: 'More channels',
+    channelsIntro: ['We have so much to share with the world that', 'just one channel is not enough', '. So we created plenty and we are still creating more.'],
+    ctaLabel: 'Contact',
+    phoneAlt: 'Classical statue looking at a cell phone, shown on a phone screen',
+    ctaTitle: ["Don't", 'miss', 'out'],
+    ctaText: 'Share your curiosity',
+    ctaButton: 'Contact us',
+  },
+}[lang];
+---
+
+
+<Layout
+  title={content.title}
+  description={content.description}
+  lang={lang}
+  alternates={homePath}
+>
+
+  <!-- Hero -->
+  <section class="bg-[#111] text-white pt-8 pb-16 md:pt-12 md:pb-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <video
+        id="hero-video"
+        class="w-full aspect-video object-cover bg-black"
+        src="/video/hero.mp4"
+        poster="/img/hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+        tabindex="-1"
+      ></video>
+      <h1 class="text-4xl md:text-6xl font-extrabold uppercase leading-[1.05] tracking-tight mt-2 mb-6">
+        {content.heroTitle[0]}<br />{content.heroTitle[1]}
+      </h1>
+      <p class="text-sm md:text-base font-semibold max-w-2xl leading-relaxed">
+        {content.heroText}
+      </p>
+      <div class="w-24 h-3 bg-rosa mt-6" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-white py-16 md:py-20" aria-label={content.statsLabel}>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-4xl font-extrabold uppercase text-center tracking-tight text-gray-950 mb-12">
+        {content.statsTitle}
+      </h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10" role="list">
+        {content.stats.map(({ value, unit, desc }) => (
+          <li>
+            <p class="text-5xl font-extrabold text-rosa leading-none">{value}</p>
+            <p class="text-2xl font-extrabold text-gray-950 leading-tight">{unit}</p>
+            <p class="text-sm text-gray-700 mt-1 max-w-xs">{desc}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Creaciones -->
+  <section id="canales" class="bg-sol py-16 md:py-20 overflow-hidden scroll-mt-16" aria-label={content.channelsTitle}>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-4xl font-extrabold uppercase text-center tracking-tight text-gray-950">
+        {content.channelsTitle}
+      </h2>
+      <p class="text-center text-sm md:text-base text-gray-900 mt-4 max-w-2xl mx-auto">
+        {content.channelsIntro[0]} <strong>{content.channelsIntro[1]}</strong>{content.channelsIntro[2]}
+      </p>
+      <div class="relative mt-12" data-carousel>
+        <ul
+          class="flex gap-5 overflow-x-auto snap-x snap-mandatory motion-safe:scroll-smooth scrollbar-none"
+          role="list"
+          data-carousel-track
+        >
+          {channels.map(({ slug, name, month, year, ...metric }) => (
+            <li class="snap-start shrink-0 basis-[calc((100%-1.25rem)/2)] sm:basis-[calc((100%-2.5rem)/3)] lg:basis-[calc((100%-5rem)/5)]">
+              <img
+                src={`/canales/${slug}.jpg`}
+                alt={name}
+                width="600"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="w-full aspect-square object-cover"
+              />
+              <p class="text-[11px] uppercase tracking-widest text-gray-900 mt-4 text-center">{months[lang][month - 1]} {year}</p>
+              <p class="text-xs font-bold uppercase text-gray-950 mt-1 text-center leading-snug">{metric[lang]}</p>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          data-carousel-prev
+          class="carousel-arrow left-0 -translate-x-1/4"
+          aria-label={content.prev}
+        ><svg class="w-10 h-10 md:w-12 md:h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 4l-8 8 8 8" /></svg></button>
+        <button
+          type="button"
+          data-carousel-next
+          class="carousel-arrow right-0 translate-x-1/4"
+          aria-label={content.next}
+        ><svg class="w-10 h-10 md:w-12 md:h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4l8 8-8 8" /></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-rey py-16 md:py-24 overflow-hidden" aria-label={content.ctaLabel}>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+      <div class="order-last md:order-first flex justify-center">
+        <img
+          src="/img/celular-curiosidad.webp"
+          alt={content.phoneAlt}
+          width="560"
+          height="1124"
+          loading="lazy"
+          decoding="async"
+          class="w-56 md:w-64 h-auto"
+        />
+      </div>
+      <div>
+        <h2 class="text-4xl md:text-6xl font-extrabold uppercase leading-[1.02] tracking-tight text-gray-950">
+          {content.ctaTitle.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}
+        </h2>
+        <p class="mt-6 text-gray-950 font-medium">{content.ctaText}</p>
+        <a href={routes.contact[lang]} class="btn-rosa mt-6 sm:px-12">
+          {content.ctaButton}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null;
+  if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVideo.pause();
+    heroVideo.removeAttribute('autoplay');
+  }
+
+  // Galería de canales: avanza de a una página y vuelve al inicio al llegar al final.
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+    if (!track) return;
+
+    // Centra las flechas sobre los logos (no sobre todo el ítem con texto).
+    const placeArrows = () => {
+      const img = track.querySelector('img');
+      if (img) carousel.style.setProperty('--arrow-top', `${img.offsetHeight / 2}px`);
+    };
+    placeArrows();
+    window.addEventListener('resize', placeArrows);
+
+    const page = () => track.clientWidth + parseFloat(getComputedStyle(track).columnGap || '0');
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+
+    carousel.querySelector('[data-carousel-next]')?.addEventListener('click', () => {
+      if (atEnd()) track.scrollTo({ left: 0 });
+      else track.scrollBy({ left: page() });
+    });
+    carousel.querySelector('[data-carousel-prev]')?.addEventListener('click', () => {
+      if (track.scrollLeft <= 2) track.scrollTo({ left: track.scrollWidth });
+      else track.scrollBy({ left: -page() });
+    });
+  });
+</script>

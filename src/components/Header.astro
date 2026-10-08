@@ -1,39 +1,40 @@
 ---
-const navLinks = [
-  { href: '/',          label: 'Inicio' },
-  { href: '/nosotros',  label: 'Nosotros' },
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/contacto',  label: 'Contacto' },
-];
+import { getLang, homePath, routes, translatePath, ui } from '../i18n';
+
+const lang = getLang(Astro.url);
+const t = ui[lang];
+const navLinks = t.nav;
+const otherLang = lang === 'es' ? 'en' : 'es';
+const switchHref = translatePath(Astro.url, otherLang);
+const isActive = (href: string) =>
+  href === homePath[lang] ? currentPath === href : currentPath.startsWith(href);
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+<header class="fixed top-0 inset-x-0 z-50 bg-black border-b border-white/10">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 flex-shrink-0" aria-label="Upsomedia - Inicio">
-      <span class="text-xl font-black tracking-tight text-gray-900">
-        UPSO<span class="text-brand-600">MEDIA</span>
-      </span>
+    <a href={homePath[lang]} class="flex items-center gap-2 flex-shrink-0" aria-label={t.homeLabel}>
+      <img src="/img/logo-upsomedia.png" alt="Upsomedia" width="894" height="106" class="h-5 w-auto" />
     </a>
 
     <!-- Desktop nav -->
     <ul class="hidden md:flex items-center gap-1" role="list">
       {navLinks.map(({ href, label }) => {
-        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        const active = isActive(href);
         return (
           <li>
             <a
               href={href}
               class:list={[
                 'px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150',
-                isActive
-                  ? 'text-brand-600 bg-brand-50'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50',
+                active
+                  ? 'text-black bg-white'
+                  : 'text-gray-300 hover:text-white hover:bg-white/10',
               ]}
-              aria-current={isActive ? 'page' : undefined}
+              aria-current={active ? 'page' : undefined}
             >
               {label}
             </a>
@@ -42,17 +43,37 @@ const currentPath = Astro.url.pathname;
       })}
     </ul>
 
-    <!-- CTA desktop -->
-    <a href="/contacto" class="hidden md:inline-flex btn-primary text-sm">
-      Hablemos
-    </a>
+    <!-- LinkedIn + CTA desktop -->
+    <div class="hidden md:flex items-center gap-4">
+      <a
+        href="https://www.linkedin.com/company/upsomedia-com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Upsomedia en LinkedIn"
+        class="opacity-90 hover:opacity-100 transition-opacity"
+      >
+        <img src="/img/linkedin.png" alt="" width="28" height="28" class="w-7 h-7" />
+      </a>
+      <a
+        href={switchHref}
+        hreflang={otherLang}
+        lang={otherLang}
+        aria-label={t.switchLabel}
+        class="text-sm font-semibold uppercase text-gray-300 hover:text-white transition-colors"
+      >
+        {otherLang}
+      </a>
+      <a href={routes.contact[lang]} class="btn-rosa text-sm">
+        {t.cta}
+      </a>
+    </div>
 
     <!-- Mobile menu button -->
     <button
       id="menu-toggle"
       type="button"
-      class="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
-      aria-label="Abrir menú"
+      class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+      aria-label={t.openMenu}
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
@@ -66,21 +87,21 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white">
+  <div id="mobile-menu" class="md:hidden hidden border-t border-white/10 bg-black">
     <ul class="px-4 py-3 space-y-1" role="list">
       {navLinks.map(({ href, label }) => {
-        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        const active = isActive(href);
         return (
           <li>
             <a
               href={href}
               class:list={[
                 'block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
-                isActive
-                  ? 'text-brand-600 bg-brand-50'
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
+                active
+                  ? 'text-black bg-white'
+                  : 'text-gray-300 hover:text-white hover:bg-white/10',
               ]}
-              aria-current={isActive ? 'page' : undefined}
+              aria-current={active ? 'page' : undefined}
             >
               {label}
             </a>
@@ -88,7 +109,12 @@ const currentPath = Astro.url.pathname;
         );
       })}
       <li class="pt-2">
-        <a href="/contacto" class="btn-primary w-full text-center">Hablemos</a>
+        <a href={switchHref} hreflang={otherLang} lang={otherLang} class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">
+          {t.switchLabel}
+        </a>
+      </li>
+      <li class="pt-2">
+        <a href={routes.contact[lang]} class="btn-rosa w-full text-center">{t.cta}</a>
       </li>
     </ul>
   </div>

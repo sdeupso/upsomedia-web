@@ -1,3 +1,8 @@
-# Sin redirects personalizados por ahora.
-# Cloudflare Pages sirve /nosotros, /servicios y /contacto
-# desde /nosotros/index.html, etc. sin reglas adicionales.
+# Cloudflare Pages sirve /nosotros, /contacto, /en/about y /en/contact
+# desde su index.html sin reglas adicionales.
+
+# La sección Servicios se eliminó: los enlaces antiguos van a la portada.
+/servicios     /     301
+/servicios/    /     301
+/en/services   /en/  301
+/en/services/  /en/  301

@@ -1,0 +1,22 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  lead: string;
+}
+
+const { kicker, title, lead } = Astro.props;
+---
+
+<section class="bg-[#111] text-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-rosa text-xs font-bold tracking-widest uppercase mb-4">{kicker}</p>
+    <h1 class="text-4xl md:text-6xl font-extrabold uppercase leading-[1.05] tracking-tight mb-6">
+      {title}
+    </h1>
+    <p class="text-sm md:text-base font-semibold max-w-2xl leading-relaxed">
+      {lead}
+    </p>
+    <div class="w-24 h-3 bg-rosa mt-6" aria-hidden="true"></div>
+  </div>
+</section>
