@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: 'M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M4 6h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z',
+    title: 'Producción de Video',
+    description: 'Producimos más de 8.000 videos al mes en múltiples formatos: videos cortos, reels, documentales breves y series de contenido para YouTube, TikTok, Instagram y más.',
+    features: ['Guionado y producción', 'Edición profesional', 'Optimización por plataforma', 'Publicación y programación'],
+  },
+  {
+    icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
+    title: 'Contenido Multimedia',
+    description: 'Creamos contenido original que combina texto, imagen, video y audio para distintos formatos y plataformas, adaptándose al lenguaje de cada red social.',
+    features: ['Fotografía y diseño gráfico', 'Infografías y motion graphics', 'Podcasts y audio', 'Stories e interactivos'],
+  },
+  {
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+    title: 'Gestión de Canales',
+    description: 'Administración integral de más de 50 canales digitales. Nos encargamos de la estrategia, publicación, comunidad y análisis para maximizar el alcance y engagement.',
+    features: ['Estrategia de contenido', 'Calendario editorial', 'Gestión de comunidad', 'Reportes de métricas'],
+  },
+  {
+    icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z',
+    title: 'Redacción Editorial',
+    description: 'Artículos y textos de calidad periodística adaptados al lenguaje digital. Noticias, curiosidades, análisis y entretenimiento para todas las audiencias.',
+    features: ['Artículos de curiosidades', 'Noticias y actualidad', 'SEO editorial', 'Adaptación de formatos'],
+  },
+  {
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+    title: 'Estrategia Digital',
+    description: 'Desarrollamos planes estratégicos de contenido basados en datos y tendencias para posicionar tu marca o canal en el ecosistema digital.',
+    features: ['Análisis de audiencia', 'Tendencias y benchmarking', 'Planificación estratégica', 'Consultoría de crecimiento'],
+  },
+  {
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+    title: 'Branded Content',
+    description: 'Creamos contenido patrocinado que conecta marcas con audiencias de forma auténtica, integrado naturalmente en nuestros canales de mayor alcance.',
+    features: ['Integraciones nativas', 'Contenido co-creado', 'Distribución multi-canal', 'Medición de impacto'],
+  },
+];
+---
+
+<Layout
+  title="Servicios"
+  description="Conoce los servicios de Upsomedia: producción de video, contenido multimedia, gestión de canales sociales, redacción editorial, estrategia digital y branded content."
+>
+
+  <!-- Hero -->
+  <section class="bg-gray-950 text-white py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-brand-400 text-sm font-semibold tracking-widest uppercase mb-4">Lo que hacemos</p>
+        <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6">
+          Servicios
+        </h1>
+        <p class="text-gray-400 text-xl leading-relaxed">
+          Producción de contenido masiva, estratégica y de calidad para marcas y medios
+          que quieren conectar con millones de personas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services grid -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+        {services.map(({ icon, title, description, features }) => (
+          <li class="rounded-2xl border border-gray-100 p-8 hover:border-brand-200 hover:shadow-lg transition-all duration-200 group">
+            <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+              <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d={icon} />
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">{title}</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6">{description}</p>
+            <ul class="space-y-2" role="list">
+              {features.map(f => (
+                <li class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-brand-600 text-white text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">
+        ¿Listo para crear algo increíble?
+      </h2>
+      <p class="text-brand-100 text-lg mb-10">
+        Cuéntanos tu proyecto y encontraremos la mejor forma de hacerlo realidad.
+      </p>
+      <a href="/contacto" class="inline-flex items-center justify-center px-10 py-4 rounded-lg bg-white text-brand-700 font-bold text-base hover:bg-brand-50 transition-colors">
+        Contactar ahora
+      </a>
+    </div>
+  </section>
+
+</Layout>

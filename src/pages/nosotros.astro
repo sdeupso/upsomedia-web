@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  {
+    title: 'Creatividad',
+    description: 'Buscamos constantemente nuevas formas de contar historias que conecten con la audiencia.',
+  },
+  {
+    title: 'Calidad',
+    description: 'Cada pieza de contenido pasa por un proceso riguroso para garantizar el más alto estándar.',
+  },
+  {
+    title: 'Transversalidad',
+    description: 'Creamos contenido para todas las edades y gustos, sin fronteras culturales ni generacionales.',
+  },
+  {
+    title: 'Innovación',
+    description: 'Nos adaptamos a las nuevas plataformas y tendencias antes de que sean masivas.',
+  },
+];
+---
+
+<Layout
+  title="Nosotros"
+  description="Conoce a Upsomedia: un equipo apasionado por crear contenido original y relevante desde Santiago, Chile para el mundo hispanohablante."
+>
+
+  <!-- Page hero -->
+  <section class="bg-gray-950 text-white py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-brand-400 text-sm font-semibold tracking-widest uppercase mb-4">Quiénes somos</p>
+        <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6">
+          Nosotros
+        </h1>
+        <p class="text-gray-400 text-xl leading-relaxed">
+          Somos un equipo de creadores, periodistas y productores apasionados por contar
+          las historias que el mundo quiere escuchar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-brand-600 text-sm font-semibold tracking-widest uppercase mb-4">Nuestra historia</p>
+          <h2 class="section-title mb-6">Creando desde Santiago para el mundo</h2>
+          <div class="prose prose-gray max-w-none text-gray-600 space-y-4">
+            <p>
+              Upsomedia nació con una convicción simple: el contenido de calidad, original y relevante
+              tiene el poder de conectar personas en cualquier parte del mundo.
+            </p>
+            <p>
+              Desde nuestras oficinas en Lo Barnechea, Santiago de Chile, construimos una red de
+              canales digitales que hoy alcanza a más de 120 millones de seguidores en plataformas
+              como YouTube, TikTok, Instagram y más.
+            </p>
+            <p>
+              Cada mes producimos miles de videos y artículos en formatos variados: entretenimiento,
+              curiosidades, cultura pop, ciencia, y todo lo que genera conversación en internet.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-brand-600 text-white rounded-2xl p-8 flex flex-col justify-center">
+            <p class="text-5xl font-black mb-2">+120M</p>
+            <p class="text-brand-100 text-sm font-medium">Seguidores acumulados en todas las plataformas</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-8 flex flex-col justify-center border border-gray-100">
+            <p class="text-5xl font-black text-gray-900 mb-2">+8K</p>
+            <p class="text-gray-500 text-sm font-medium">Videos producidos cada mes</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-8 flex flex-col justify-center border border-gray-100">
+            <p class="text-5xl font-black text-gray-900 mb-2">+50</p>
+            <p class="text-gray-500 text-sm font-medium">Canales digitales activos</p>
+          </div>
+          <div class="bg-gray-950 text-white rounded-2xl p-8 flex flex-col justify-center">
+            <p class="text-5xl font-black mb-2">+10</p>
+            <p class="text-gray-400 text-sm font-medium">Años de experiencia en medios digitales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-brand-600 text-sm font-semibold tracking-widest uppercase mb-4">Lo que nos mueve</p>
+        <h2 class="section-title">Nuestros valores</h2>
+      </div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
+        {values.map(({ title, description }, i) => (
+          <li class="bg-white rounded-2xl p-8 border border-gray-100">
+            <span class="text-5xl font-black text-brand-100 mb-4 block">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-brand-600 text-sm font-semibold tracking-widest uppercase mb-4">Nuestra misión</p>
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-6">
+        "Generar contenido original, relevante y transversal que entretiene, informa e
+        inspira a millones de personas en el mundo hispanohablante."
+      </h2>
+      <a href="/contacto" class="btn-primary mt-6">
+        Trabajemos juntos
+      </a>
+    </div>
+  </section>
+
+</Layout>

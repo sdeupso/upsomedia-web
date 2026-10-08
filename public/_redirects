@@ -1,0 +1,3 @@
+# Sin redirects personalizados por ahora.
+# Cloudflare Pages sirve /nosotros, /servicios y /contacto
+# desde /nosotros/index.html, etc. sin reglas adicionales.
