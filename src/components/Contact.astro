@@ -12,13 +12,11 @@ const { lang } = Astro.props;
 const content = {
   es: {
     title: 'Contacto',
-    description: 'Contáctanos en Upsomedia. Estamos en Av. Raúl Labbe 12613, Lo Barnechea, Santiago, Chile y en 66 Paul Street, Greater London, EC2A 4NA, United Kingdom. Teléfono: +56 2 2248 7682.',
+    description: 'Contáctanos en Upsomedia. Estamos en Av. Raúl Labbe 12613, Lo Barnechea, Santiago, Chile. Teléfono: +56 2 2248 7682.',
     kicker: 'Estamos aquí',
     lead: '¿Tienes un proyecto, una consulta o simplemente quieres saber más? Escríbenos, estaremos encantados de ayudarte.',
     infoTitle: 'Información de contacto',
     address: 'Dirección',
-    addressChile: 'Dirección — Chile',
-    addressUK: 'Dirección — Reino Unido',
     phone: 'Teléfono',
     formTitle: 'Envíanos un mensaje',
     formIntro: 'Te responderemos a la brevedad.',
@@ -46,13 +44,11 @@ const content = {
   },
   en: {
     title: 'Contact us',
-    description: 'Get in touch with Upsomedia. We are at Av. Raúl Labbe 12613, Lo Barnechea, Santiago, Chile and at 66 Paul Street, Greater London, EC2A 4NA, United Kingdom. Phone: +56 2 2248 7682.',
+    description: 'Get in touch with Upsomedia. We are at Av. Raúl Labbe 12613, Lo Barnechea, Santiago, Chile. Phone: +56 2 2248 7682.',
     kicker: "We're here",
     lead: "Have a project, a question or just want to know more? Write to us, we'll be happy to help.",
     infoTitle: 'Contact information',
     address: 'Address',
-    addressChile: 'Address — Chile',
-    addressUK: 'Address — United Kingdom',
     phone: 'Phone',
     formTitle: 'Send us a message',
     formIntro: "We'll get back to you shortly.",
@@ -105,27 +101,10 @@ const iconBox = 'w-10 h-10 bg-rosa text-gray-950 flex items-center justify-cente
               </svg>
             </div>
             <div>
-              <p class="text-sm font-bold uppercase text-gray-950 mb-1">{content.addressChile}</p>
+              <p class="text-sm font-bold uppercase text-gray-950 mb-1">{content.address}</p>
               <p class="text-sm text-gray-700">
                 Av. Raúl Labbe 12613 of 632<br />
                 Lo Barnechea, Santiago, Chile
-              </p>
-            </div>
-          </li>
-
-          <li class="flex gap-4">
-            <div class={iconBox}>
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-sm font-bold uppercase text-gray-950 mb-1">{content.addressUK}</p>
-              <p class="text-sm text-gray-700">
-                66 Paul Street, Greater London<br />
-                EC2A 4NA, United Kingdom
               </p>
             </div>
           </li>
